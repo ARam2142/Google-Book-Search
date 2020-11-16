@@ -1,9 +1,9 @@
 const express = require("express");
-//const path = require("path");
 const routes = require("./routes");
 const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
+//const axios = require('axios');
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -14,7 +14,18 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //Add routes, both API and view
-// app.use(routes);
+app.use(routes);
+
+// app.get("/googlebooks", function(req, res) {
+//   xios.get("https://www.googleapis.com/books/v1/volumes", { params: { q: 'knitting' } })
+//   .then(response => {
+//     res.json(response.data)
+//   })
+//   .catch(function (err) {
+//     console.log(err)
+//   });
+
+// });
 
 //connect to Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {

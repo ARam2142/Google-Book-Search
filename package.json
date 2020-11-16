@@ -1,6 +1,7 @@
 {
   "name": "google-book-search",
   "version": "1.0.0",
+  "proxy": "http://localhost:3001",
   "description": "Instructions",
   "main": "server.js",
   "dependencies": {
