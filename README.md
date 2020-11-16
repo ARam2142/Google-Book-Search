@@ -1,7 +1,7 @@
 # Google-Book-Search
 
 # Background
-In this application you can look at any book you want. You may look at the name, author, etc.
+In this application you can look at any book you want. You may look at the name, author, etc. This needs more work. It is not even close to done. The front end design is up and ready. The functionalality for searching books and saving them to the mongoose db is still in progress.
 
 # UserStory
 As a user, i want to be able to save books as well as search them.
@@ -16,6 +16,8 @@ CSS
 React JS
 
 Express JS
+
+mongoose
 
 # Screenshots
 Screen Shot 2020-11-01 at 10 30 42 PM
