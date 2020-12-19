@@ -1,5 +1,4 @@
 import axios from "axios";
-// const API_Key = 'AIzaSyDICvg1AuEgsUWN9vSVLJ0MjImaJp7eT6E';
 
 export default {
     // export function log(error) {
