@@ -3,6 +3,7 @@ import API from "../utils/API";
 import Jumbotron from "../components/jumbotron/Jumbotron"
 import { Col, Row, Container } from "../components/grid/Grid";
 import { Input, FormBtn } from "../components/form/Index";
+//import Image from "react-bootstrap/Image"
 import List from "../components/list/List";
 
 function Search() {
@@ -30,7 +31,7 @@ function Search() {
         setBookSearch({ value })
     };
 
-    //handles information being returned in the console
+    //handles submitting component state when user submits form
     function handleFormSubmit(event) {
         event.preventDefault();
         if (books) {
@@ -39,22 +40,22 @@ function Search() {
         }
     }
 
-    // function handleBookSubmit(books) {
-    //     if (bookSearch.link && bookSearch.image) {
-    //         API.saveBook({
-    //             title: books.title,
-    //             authors: books.authors,
-    //             description: books.description,
-    //             imageLinks: books.imageLinks,
-    //             link: books.link
-    //         }
+    function handleBookSubmit(books) {
+        if (bookSearch.link && bookSearch.image) {
+            API.saveBook({
+                title: books.title,
+                authors: books.authors,
+                description: books.description,
+                image: books.imageLinks.thumbnail,
+                Link: books.infoLink
+            }
 
-    //         )
-    //             .then(res => loadBooks())
-    //             .catch(err => console.log(err))
-    //     }
+            )
+                .then(res => loadBooks())
+                .catch(err => console.log(err))
+        }
 
-    // }
+    }
 
 
     //return info on page
@@ -80,7 +81,6 @@ function Search() {
                         </FormBtn>
                     </form>
                 </Col>
-
             </Row>
             <List />
 
