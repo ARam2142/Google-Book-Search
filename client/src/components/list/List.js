@@ -1,40 +1,44 @@
 import React from "react";
-import { Row, Col, Container } from "../grid/Grid";
+import Col from "react-bootstrap/Col";
+//import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container'
+import Image from "react-bootstrap/Image";
+// import { Col, Row, Container } from "../components/grid/Grid";
+//import ListGroup from 'react-bootstrap/ListGroup'
+
 //import Grid from "./components/grid/Grid";
 
-export function List({ children }) {
-    return <ul className="list-group">{children}</ul>
-}
+function Book(props) {
 
-export function ListItem({
-    title,
-    author, 
-    description,
-    link,
-    deleteBook
-}) {
     return (
-    <li className="list-group-item">
-        <Container>
-            <Row>
-                <Col size="xs-4 sm-3">
-                    {/* A picture should go here */}
-                </Col>
-                <Col size="xs-8 sm-9">
-                    <h3>{title}</h3>
-                    <h5>{author}</h5>
-                    <p>{description}</p>
-                    <button className="btn"><a id="btn" rel="noreferrer noopener" target="_blank" href={link}>
-                        View Book
-                    </a></button>
-                    <button className="btn" id="btn" onClick={() => deleteBook()}>Delete Book</button>
-                </Col>
-            </Row>
-        </Container>
-    </li>
-
+        <li className="list-group-item">
+            <Container>
+                <Row>
+                    {
+                        //(props.info.image || props.info.imageLinks.thumbnail)? 
+                        <Image
+                            xs={6} md={4}
+                            top="true"
+                            src={props.info.imageLinks.thumbnail}
+                            alt="Book Pic" thumbnail
+                        />
+                        //:<h4 className="text-center">
+                        //No Image provided by Google Books
+                        //</h4> 
+                    }
+                    <Col>
+                        <h1>{props.info.title}</h1>
+                        <h4>{props.info.authors}</h4>
+                        <p>{props.info.description}</p>
+                        <p>{props.info.link}</p>
+                    </Col>
+                </Row>
+            </Container>
+        </li>
     )
 
+
 }
 
-
+export default Book;
