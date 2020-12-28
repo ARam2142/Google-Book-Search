@@ -16,8 +16,9 @@ function Search() {
         loadBooks()
     }, []);
 
+    //loads book information to 
     function loadBooks() {
-        API.searchBook()
+        API.searchBook(bookSearch)
             .then(res =>
                 setBooks(res.data.items)
             )
@@ -27,7 +28,7 @@ function Search() {
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
         const { value } = event.target;
-        setBookSearch({value})
+        setBookSearch( value )
     };
 
     //handles submitting component state when user submits form
@@ -40,7 +41,7 @@ function Search() {
     }
 
     function handleBookSubmit(book) {
-        if (books.title) {
+        if (book.title && book.description) {
             API.saveBook(
                 {
                     title: book.title,
@@ -57,12 +58,11 @@ function Search() {
 
     }
 
-
     //modeled after Hillary Ferraro Google Books app
     //return info on page
     return (
         <>
-            <Container fluid>
+            <Container>
                 <Row>
                     <Col size="sm-12">
                         <Jumbotron>
@@ -72,35 +72,37 @@ function Search() {
                             <Input
                                 onChange={handleInputChange}
                                 name="title"
-                                placeholder="Title (required)"
+                                placeholder="keywords"
                             />
                             <FormBtn
                                 //disabled={!(formObject.author && formObject.title)}
                                 onClick={handleFormSubmit}
                             >
                                 Search
-                        </FormBtn>
+                            </FormBtn>
                         </form>
                     </Col>
                 </Row>
             </Container>
             <section>
-                <Container>
-                    <h2>Search Results</h2>
+                <Container fluid>
+                    <h2 className="text-center">Search Results</h2>
                     <Row>
                         {books ? books.map((book) => (
                             <List
                                 key={book.id}
-                                info={book.volumeInfo}
-                                page={"search"}
+                                data={book.volumeInfo}
+                                // page={"search"}
                                 onClick={handleBookSubmit}
                             />
                         ))
                         : null}
-
                     </Row>
                 </Container>
             </section>
+            <br/>
+            <br/>
+            <br/>
         </>
     );
 }
