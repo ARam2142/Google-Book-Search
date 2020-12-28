@@ -4,6 +4,9 @@ import Col from "react-bootstrap/Col";
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container'
 import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 // import { Col, Row, Container } from "../components/grid/Grid";
 //import ListGroup from 'react-bootstrap/ListGroup'
 
@@ -12,26 +15,39 @@ import Image from "react-bootstrap/Image";
 function Book(props) {
 
     return (
+
         <li className="list-group-item">
             <Container>
                 <Row>
                     {
-                        //(props.info.image || props.info.imageLinks.thumbnail)? 
                         <Image
                             xs={6} md={4}
                             top="true"
-                            src={props.info.imageLinks.thumbnail}
+                            src={props.data.imageLinks.thumbnail}
                             alt="Book Pic" thumbnail
                         />
-                        //:<h4 className="text-center">
-                        //No Image provided by Google Books
-                        //</h4> 
                     }
                     <Col>
-                        <h1>{props.info.title}</h1>
-                        <h4>{props.info.authors}</h4>
-                        <p>{props.info.description}</p>
-                        <p>{props.info.link}</p>
+                        <h1>{props.data.title}</h1>
+                        <h4>{props.data.authors}</h4>
+                        <p>{props.data.description}</p>
+                        <p>{props.data.link}</p>
+
+                        <ButtonToolbar aria-label="Toolbar with button groups">
+                            <ButtonGroup className="mr-2" aria-label="first btn">
+                                <Button variant="secondary"
+                                    href={props.data.infoLink}
+                                    role="button"
+                                    rel="nonreferrer noopener"
+                                    target="_blank"
+                                >View
+                                </Button>
+                            </ButtonGroup>
+
+                            <ButtonGroup className="mr-2" aria-label="second btn">
+                                <Button variant="secondary">Save</Button>
+                            </ButtonGroup>
+                        </ButtonToolbar>
                     </Col>
                 </Row>
             </Container>
